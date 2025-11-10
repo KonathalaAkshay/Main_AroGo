@@ -94,7 +94,7 @@ const Search = ({ navigation }) => {
             <TextInput
               value={query}
               onChangeText={setQuery}
-              placeholder="Medicine name or a lab..."
+              placeholder="Lab or a Medicine name..."
               placeholderTextColor="#9EA3A8"
               returnKeyType="search"
               onSubmitEditing={onSubmit}
