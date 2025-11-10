@@ -28,7 +28,6 @@ const Profile = () => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  // Get user details from route or use fallbacks
   const user = (route.params && route.params.user) || {
     name: 'Akshay Konathala',
     phone: '+91 98765 43210',
@@ -42,33 +41,20 @@ const Profile = () => {
     .slice(0, 2)
     .toUpperCase();
 
-  //   const handleGoPersonal = useCallback(() => {
-  //     navigation.navigate('PersonalDetails' as never);
-  //   }, [navigation]);
-
-  //   const handleGoSettings = useCallback(() => {
-  //     navigation.navigate('Settings' as never);
-  //   }, [navigation]);
-
-  //   const handleLogout = useCallback(async () => {
-  //     await AsyncStorage.removeItem('userToken');
-  //     navigation.reset({
-  //       index: 0,
-  //       routes: [{ name: 'Login' as never }],
-  //     });
-  //   }, [navigation]);
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {/* Background underlay */}
-
+      {/* Background */}
       <ImageBackground
         source={require('../../assets/images/BackGround.png')}
         style={StyleSheet.absoluteFillObject}
         resizeMode="cover"
         pointerEvents="none"
       />
+      <View style={styles.topCustomHeader}>
       <TopCustomHeader title="Profile" />
+      </View>
+
+      {/* Main content */}
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -76,13 +62,14 @@ const Profile = () => {
       >
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={styles.scrollContainer}
+          contentContainerStyle={[
+            styles.scrollContainer,
+            { paddingBottom: 80 }, // add bottom padding to prevent overlap
+          ]}
         >
-          {/* Card container to match your other screens */}
           <Surface style={styles.surface}>
             <Card style={styles.card}>
               <Card.Content>
-                {/* Header: avatar + title + subtitle */}
                 <View style={styles.headerWrap}>
                   <Avatar.Text
                     size={56}
@@ -92,13 +79,10 @@ const Profile = () => {
                   />
                   <View style={{ marginLeft: 12 }}>
                     <Text style={styles.title}>{user.name}</Text>
-                    {/* <Text style={styles.subtitle}>
-                        Your account information
-                      </Text> */}
                   </View>
                 </View>
 
-                {/* User details as text (consistent row style) */}
+                {/* User Info */}
                 <View style={{ marginTop: 8, marginBottom: 16 }}>
                   <View style={styles.row}>
                     <Icon
@@ -128,10 +112,9 @@ const Profile = () => {
 
                 <Divider />
 
-                {/* Section heading */}
+                {/* Actions */}
                 <Text style={styles.sectionLabel}>Actions</Text>
 
-                {/* Action list */}
                 <List.Section style={{ marginTop: 4 }}>
                   <List.Item
                     title="Personal Details"
@@ -142,7 +125,6 @@ const Profile = () => {
                     right={props => (
                       <List.Icon {...props} icon="chevron-right" />
                     )}
-                    //   onPress={handleGoPersonal}
                   />
                   <List.Item
                     title="Settings"
@@ -151,7 +133,6 @@ const Profile = () => {
                     right={props => (
                       <List.Icon {...props} icon="chevron-right" />
                     )}
-                    //   onPress={handleGoSettings}
                   />
                   <List.Item
                     title="About"
@@ -162,7 +143,6 @@ const Profile = () => {
                     right={props => (
                       <List.Icon {...props} icon="chevron-right" />
                     )}
-                    //   onPress={() => navigation.navigate('About')}
                   />
                   <List.Item
                     title="Log Out"
@@ -170,16 +150,16 @@ const Profile = () => {
                     left={props => (
                       <List.Icon {...props} icon="logout" color="#F44336" />
                     )}
-                    //   onPress={handleLogout}
                   />
                 </List.Section>
               </Card.Content>
             </Card>
           </Surface>
         </ScrollView>
-
-        <BottomNavigation />
       </KeyboardAvoidingView>
+      <View style={styles.bottomWrap}>
+        <BottomNavigation />
+      </View>
     </SafeAreaView>
   );
 };

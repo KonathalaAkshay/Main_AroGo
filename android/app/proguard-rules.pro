@@ -1,10 +1,17 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /usr/local/Cellar/android-sdk/24.3.3/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# React Native / Hermes
+-keep class com.facebook.** { *; }
+-keep class com.facebook.hermes.** { *; }
+-keep class com.facebook.jni.** { *; }
+-keep class com.swmansion.** { *; }   # reanimated/gesture-handler
+-keep class com.google.gson.** { *; }
+-keep class okhttp3.** { *; }
+-keep class okio.** { *; }
 
-# Add any project specific keep options here:
+# Keep annotations & signatures
+-keepattributes *Annotation*, Signature, InnerClasses, EnclosingMethod
+
+# If you reflectively access models, keep them (edit package):
+# -keep class com.arohago.model.** { *; }
+
+# Remove Log calls in release/minified debug
+-assumenosideeffects class android.util.Log { *; }

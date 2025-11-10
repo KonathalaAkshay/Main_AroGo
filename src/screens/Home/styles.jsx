@@ -112,23 +112,23 @@ export const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
-  bottomWrap: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: BOTTOM_NAV_HEIGHT,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    // shadows
-    elevation: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: -2 },
-    // small top border to separate from content
-    borderTopWidth: Platform.OS === 'android' ? 0 : StyleSheet.hairlineWidth,
-    borderTopColor: '#E5E7EB',
-    paddingBottom: 0, // your BottomNavigation can handle safe area if needed
-  },
+   bottomWrap: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      height: BOTTOM_NAV_HEIGHT,
+      backgroundColor: '#fff',
+      justifyContent: 'center',
+      // shadows
+      elevation: 10,
+      shadowColor: '#000',
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+      shadowOffset: { width: 0, height: -2 },
+      // small top border to separate from content
+      borderTopWidth: Platform.OS === 'android' ? 0 : StyleSheet.hairlineWidth,
+      borderTopColor: '#E5E7EB',
+      paddingBottom: 0, // your BottomNavigation can handle safe area if needed
+    },
 });

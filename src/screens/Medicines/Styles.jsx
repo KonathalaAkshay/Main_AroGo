@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+// Styles.js
+import { StyleSheet, Platform } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -23,21 +24,49 @@ export const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'flex-start',
-    // alignItems: 'center',
     backgroundColor: 'transparent',
     padding: wp('5%'),
+    paddingBottom: wp('5%') + BOTTOM_NAV_HEIGHT,
   },
+
+  // Helpful if you wrap TopCustomHeader — keeps it above scroll content
+  topCustomHeader: {
+    zIndex: 10,
+    elevation: 6,
+  },
+
   surface: {
     width: wp('90%'),
     maxWidth: 400,
     elevation: 8,
     borderRadius: 12,
+    // optional: add padding so lists/cards don't hug the edges
+    // padding: 12,
   },
   card: {
     backgroundColor: theme.colors.surface,
     borderRadius: 12,
     elevation: 4,
   },
+
+  // ✅ Nice defaults for test/lab cards
+  testCard: {
+    backgroundColor: theme.colors.surface,
+    borderRadius: 10,
+    marginBottom: 12,
+    elevation: 3,
+    // iOS shadow
+    shadowColor: '#000',
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  testCardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 6,
+  },
+
   logoContainer: {
     alignItems: 'center',
     marginBottom: hp('3%'),
@@ -112,6 +141,8 @@ export const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
+
+  // ✅ Pins bottom nav; give it a height for consistent layout
   bottomWrap: {
     position: 'absolute',
     left: 0,
