@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     maxWidth: 400,
     elevation: 8,
     borderRadius: 12,
+    backgroundColor: '#fff',
     // optional: add padding so lists/cards don't hug the edges
     // padding: 12,
   },
@@ -48,7 +49,7 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
 
-  // Nice defaults for test/lab cards
+  // ✅ Nice defaults for test/lab cards
   testCard: {
     backgroundColor: theme.colors.surface,
     borderRadius: 10,
@@ -139,6 +140,22 @@ export const styles = StyleSheet.create({
     color: '#6B7280',
     textTransform: 'uppercase',
     letterSpacing: 0.6,
+  },
+
+  btn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    backgroundColor: MAJOR_COLOR,
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginTop: 12,
+  },
+  btnText: {
+    fontSize: 15,
+    color: '#FFFFFF', // better contrast on primary bg
+    fontWeight: '700',
   },
 
   // Pins bottom nav; give it a height for consistent layout

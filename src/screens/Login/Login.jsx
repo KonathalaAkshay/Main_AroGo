@@ -50,24 +50,26 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      showSnack('Please fill in all fields');
-      return;
-    }
-    setLoading(true);
-    try {
-      await axios.post('https://jsonplaceholder.typicode.com/posts', {
-        email,
-        password,
-      });
-      await AsyncStorage.setItem('userToken', 'mockToken123');
-      showSnack('Login successful!');
-      navigation.navigate('Home');
-    } catch (error) {
-      showSnack('Login failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    // if (!email || !password) {
+    //   showSnack('Please fill in all fields');
+    //   return;
+    // }
+    // setLoading(true);
+    // try {
+    //   await axios.post('https://jsonplaceholder.typicode.com/posts', {
+    //     email,
+    //     password,
+    //   });
+    //   await AsyncStorage.setItem('userToken', 'mockToken123');
+    //   showSnack('Login successful!');
+    //   navigation.navigate('Home');
+    // } catch (error) {
+    //   showSnack('Login failed. Please try again.');
+    // } finally {
+    //   setLoading(false);
+    // }
+
+    navigation.navigate('Home');
   };
 
   return (

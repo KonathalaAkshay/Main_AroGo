@@ -38,9 +38,9 @@ const LabsDetails = ({ navigation, route }) => {
 
   // ---- booking form state ----
   const [selectedDate, setSelectedDate] = useState(null);
-  const [location, setLocation] = useState(LOCATIONS[0]);
+  const [location, setLocation] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
-  const [expanded, setExpanded] = useState(false); 
+  const [expanded, setExpanded] = useState(false);
 
   const openPicker = () => setShowPicker(true);
   const closePicker = () => setShowPicker(false);
@@ -51,17 +51,26 @@ const LabsDetails = ({ navigation, route }) => {
 
   const handleLocationSelect = loc => {
     setLocation(loc);
-    setExpanded(false); 
+    setExpanded(false);
   };
 
   const submit = () => {
+    if (!location) {
+      alert('Please select a location for the booking.');
+      return;
+    }
+
+    if (!selectedDate) {
+      alert('Please select a date and time for the booking.');
+      return;
+    }
     alert(
       'Booking created for ' +
         (selectedDate ? moment(selectedDate).format('lll') : 'no date') +
         ' at ' +
         location,
     );
-    navigation.navigate('Address');
+    navigation.navigate('UserDetails');
   };
 
   // ---- animations (header + bottom nav) ----
@@ -169,7 +178,7 @@ const LabsDetails = ({ navigation, route }) => {
                     left={props => (
                       <List.Icon {...props} icon="map-marker-outline" />
                     )}
-                    onPress={() => handleLocationSelect(loc)} 
+                    onPress={() => handleLocationSelect(loc)}
                   />
                 ))}
               </List.Accordion>
@@ -186,7 +195,7 @@ const LabsDetails = ({ navigation, route }) => {
                   color="#6B7280"
                   style={{ marginRight: 8 }}
                 />
-                <Text style={{ fontWeight: '700' }}>
+                <Text style={{ fontWeight: '400' }}>
                   {selectedDate
                     ? moment(selectedDate).format('LLLL')
                     : 'Pick date & time'}
@@ -204,9 +213,7 @@ const LabsDetails = ({ navigation, route }) => {
             />
 
             <TouchableOpacity style={styles.btn} onPress={submit}>
-              <Text style={styles.btnText}>
-                Add Location & Book Now
-              </Text>
+              <Text style={styles.btnText}>Add Location & Book Now</Text>
             </TouchableOpacity>
           </Card>
         </Animated.ScrollView>

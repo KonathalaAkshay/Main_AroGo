@@ -34,14 +34,6 @@ export const styles = StyleSheet.create({
     elevation: 6,
   },
 
-  surface: {
-    width: wp('90%'),
-    maxWidth: 400,
-    elevation: 8,
-    borderRadius: 12,
-    // optional: add padding so lists/cards don't hug the edges
-    // padding: 12,
-  },
   card: {
     backgroundColor: theme.colors.surface,
     borderRadius: 12,
@@ -141,7 +133,7 @@ export const styles = StyleSheet.create({
     letterSpacing: 0.6,
   },
 
-  // Pins bottom nav; give it a height for consistent layout
+  // ✅ Pins bottom nav; give it a height for consistent layout
   bottomWrap: {
     position: 'absolute',
     left: 0,

@@ -24,6 +24,9 @@ import { styles, theme } from './Styles';
 
 const ForgetPassword = () => {
   const [otp, setOtp] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [snackbarVisible, setSnackbarVisible] = useState(false);
   const [snackbarText, setSnackbarText] = useState('');
@@ -37,6 +40,14 @@ const ForgetPassword = () => {
   const handleVerify = async () => {
     if (!otp.trim() || otp.trim().length !== 6) {
       showSnack('Please enter a valid 6-digit OTP');
+      return;
+    }
+    if (!password) {
+      showSnack('Please enter a new password');
+      return;
+    }
+    if (password !== confirmPassword) {
+      showSnack('Passwords do not match');
       return;
     }
     setLoading(true);
@@ -106,6 +117,90 @@ const ForgetPassword = () => {
                       />
                     }
                     style={styles.input}
+                  />
+
+                  {/* Password Input */}
+                  <TextInput
+                    label="New Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    mode="outlined"
+                    secureTextEntry={!showPassword}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    autoComplete="password"
+                    returnKeyType="done"
+                    textColor="#000"
+                    outlineColor="#E0E3EB"
+                    activeOutlineColor={theme.colors.primary}
+                    left={
+                      <TextInput.Icon
+                        icon={props => (
+                          <Icon
+                            name="lock-outline"
+                            size={22}
+                            color={props.color ?? theme.colors.primary}
+                          />
+                        )}
+                      />
+                    }
+                    right={
+                      <TextInput.Icon
+                        icon={showPassword ? 'eye-off' : 'eye'}
+                        onPress={() => setShowPassword(v => !v)}
+                        forceTextInputFocus={false}
+                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                      />
+                    }
+                    style={styles.input}
+                    theme={{
+                      colors: {
+                        primary: theme.colors.primary,
+                        placeholder: theme.colors.placeholder,
+                      },
+                    }}
+                  />
+
+                  {/* Password Input */}
+                  <TextInput
+                    label="ConfirmPassword"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    mode="outlined"
+                    secureTextEntry={!showPassword}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    autoComplete="password"
+                    returnKeyType="done"
+                    textColor="#000"
+                    outlineColor="#E0E3EB"
+                    activeOutlineColor={theme.colors.primary}
+                    left={
+                      <TextInput.Icon
+                        icon={props => (
+                          <Icon
+                            name="lock-outline"
+                            size={22}
+                            color={props.color ?? theme.colors.primary}
+                          />
+                        )}
+                      />
+                    }
+                    right={
+                      <TextInput.Icon
+                        icon={showPassword ? 'eye-off' : 'eye'}
+                        onPress={() => setShowPassword(v => !v)}
+                        forceTextInputFocus={false}
+                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                      />
+                    }
+                    style={styles.input}
+                    theme={{
+                      colors: {
+                        primary: theme.colors.primary,
+                        placeholder: theme.colors.placeholder,
+                      },
+                    }}
                   />
 
                   <Button

@@ -116,7 +116,7 @@ const Address = ({ navigation }) => {
       'Saved',
       `Location saved:\nLat: ${loc.latitude}\nLng: ${loc.longitude}`,
     );
-    navigation.navigate('');
+    navigation.navigate('Payment');
   }, [loc]);
 
   // Save manual address
@@ -140,7 +140,7 @@ const Address = ({ navigation }) => {
         pincode || '-'
       }\nPhone: ${phone || '-'}`,
     );
-    navigation.navigate('');
+    navigation.navigate('Payment');
   }, [addr, landmark, pincode, phone, pinInvalid, phoneInvalid]);
 
   // Toggle manual block and optionally clear fields

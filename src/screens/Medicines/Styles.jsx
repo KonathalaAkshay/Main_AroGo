@@ -1,4 +1,3 @@
-// Styles.js
 import { StyleSheet, Platform } from 'react-native';
 import {
   widthPercentageToDP as wp,

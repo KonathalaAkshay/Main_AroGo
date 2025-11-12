@@ -51,7 +51,7 @@ const Profile = () => {
         pointerEvents="none"
       />
       <View style={styles.topCustomHeader}>
-      <TopCustomHeader title="Profile" />
+        <TopCustomHeader title="Profile" />
       </View>
 
       {/* Main content */}
@@ -116,6 +116,15 @@ const Profile = () => {
                 <Text style={styles.sectionLabel}>Actions</Text>
 
                 <List.Section style={{ marginTop: 4 }}>
+                  <List.Item
+                    title="Order History"
+                    description="View your Current & past orders"
+                    left={props => <List.Icon {...props} icon="cart-outline" />}
+                    right={props => (
+                      <List.Icon {...props} icon="chevron-right" />
+                    )}
+                    onPress={() => navigation.navigate('Order')}
+                  />
                   <List.Item
                     title="Personal Details"
                     description="View and edit your personal info"
