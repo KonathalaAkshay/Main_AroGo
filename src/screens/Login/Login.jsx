@@ -35,9 +35,18 @@ const Login = () => {
   const [snackbarText, setSnackbarText] = useState('');
   const navigation = useNavigation();
 
-  const showSnack = (msg) => {
+  const showSnack = msg => {
     setSnackbarText(msg);
     setSnackbarVisible(true);
+  };
+
+  handleForgotPassword = () => {
+    if (!email) {
+      showSnack('Please fill in all fields');
+      return;
+    }
+
+    navigation.navigate('ForgotPassword');
   };
 
   const handleLogin = async () => {
@@ -69,7 +78,7 @@ const Login = () => {
           <ImageBackground
             source={require('../../assets/images/BackGround.png')}
             style={StyleSheet.absoluteFillObject}
-            resizeMode="cover"   // use "contain" if you want full image without cropping
+            resizeMode="cover" // use "contain" if you want full image without cropping
           />
 
           <KeyboardAvoidingView
@@ -191,7 +200,7 @@ const Login = () => {
                     {/* Forgot Password */}
                     <Button
                       mode="text"
-                      onPress={() => showSnack('Forgot password functionality here')}
+                      onPress={handleForgotPassword}
                       style={styles.linkButton}
                       uppercase={false}
                     >
@@ -223,7 +232,10 @@ const Login = () => {
                 visible={snackbarVisible}
                 onDismiss={() => setSnackbarVisible(false)}
                 duration={3000}
-                action={{ label: 'OK', onPress: () => setSnackbarVisible(false) }}
+                action={{
+                  label: 'OK',
+                  onPress: () => setSnackbarVisible(false),
+                }}
                 wrapperStyle={{ bottom: 16 }}
                 style={{ marginHorizontal: 20, backgroundColor: '#ff0000' }}
                 theme={{ colors: { onSurface: '#FFFFFF' } }}

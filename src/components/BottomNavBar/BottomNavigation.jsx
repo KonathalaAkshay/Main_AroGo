@@ -35,7 +35,7 @@ const BottomNavigationBar = ({
 
   const tabs = [
     { name: 'Home', label: 'Home', icon: 'home-outline' },
-    { name: 'Labs', label: 'Labs', icon: 'test-tube' },
+    { name: 'Labs', label: 'Labs', icon: 'needle' },
     { name: 'Search', label: 'Search', icon: 'magnify' },
     { name: 'Medicines', label: 'Medicines', icon: 'pill' },
     { name: 'Profile', label: 'Profile', icon: 'account-circle-outline' },

@@ -15,6 +15,7 @@ import Home from './../screens/Home/Home';
 import Medicines from './../screens/Medicines/Medicines';
 import LabsDetails from './../screens/Labs/LabDetails/LabDetails';
 import Address from './../screens/Labs/Address/Address';
+import ForgetPassword from './../screens/ForgotPassword/ForgetPasswrd';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function AppNavigation() {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="SignUpOTP" component={SignUpOTP} />
+          <Stack.Screen name="ForgotPassword" component={ForgetPassword} />
 
           {/* App screens */}
           <Stack.Screen name="Profile" component={Profile} />
