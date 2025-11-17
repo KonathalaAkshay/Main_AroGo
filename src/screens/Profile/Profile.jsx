@@ -20,7 +20,7 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { styles, theme } from './styles'; // reuse your styles + theme
+import { styles, theme } from './styles';
 import TopCustomHeader from './../../components/TopNavBar/TopCustomHeader';
 import BottomNavigation from './../../components/BottomNavBar/BottomNavigation';
 
@@ -116,6 +116,17 @@ const Profile = () => {
                 <Text style={styles.sectionLabel}>Actions</Text>
 
                 <List.Section style={{ marginTop: 4 }}>
+
+                  <List.Item
+                    title="Appointments Booked"
+                    description="View your Active & Inactive appointments"
+                    left={props => (
+                      <List.Icon {...props} icon="calendar-check" />
+                    )}
+                    right={props => (
+                      <List.Icon {...props} icon="chevron-right" />
+                    )}
+                  />
                   <List.Item
                     title="Order History"
                     description="View your Current & past orders"

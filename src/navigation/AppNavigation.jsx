@@ -19,6 +19,7 @@ import ForgetPassword from './../screens/ForgotPassword/ForgetPasswrd';
 import Payments from './../screens/Payment/Payment';
 import Orders from '../screens/Orders/OrderHistory/Orders';
 import UserDetails from './../screens/Labs/UserDetails/UserDetails';
+import BookingAppointment from './../screens/DoctorAppointment/BookingAppointment';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,10 @@ export default function AppNavigation() {
           <Stack.Screen name="Address" component={Address} />
           <Stack.Screen name="Payment" component={Payments} />
           <Stack.Screen name="Order" component={Orders} />
+          <Stack.Screen
+            name="BookingAppointment"
+            component={BookingAppointment}
+          />
 
           {/* Modal screen */}
 
